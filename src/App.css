@@ -8,10 +8,10 @@
 
 body {
     background-color: rebeccapurple;
-    height: 100vh;
+/*     height: 100vh;
     display: flex;    
     justify-content: center;
-    align-items: center;    
+    align-items: center;     */
 }
 
 button {
@@ -48,4 +48,3 @@ button {
     justify-content: center;
     align-items: center;
   }
-  

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css'
 import axios from 'axios';
 import WeatherCard from './components/WeatherCard';
@@ -55,13 +55,26 @@ useEffect(() => {
 //console.log(wheather);
 
   return (
-    <div className="App">
-      {
-        weather
-        ? <WeatherCard weather={weather} temperature={temperature}/> 
-        : <Loading/>
-      }
-    </div>
+
+  <div>
+    <video autoPlay muted loop id="myVideo">
+      <source src='https://cdn.pixabay.com/vimeo/806571973/atardecer-153976.mp4?width=1920&expiry=1680371427&hash=cdc6d22ad3130320c0278f6ea4c44b28fcb8b7ba' type="video/mp4"></source>
+      Your browser does not support HTML5 video.
+    </video>
+
+    <div className="content">
+      <div className="App">
+        {
+          weather
+          ? <WeatherCard weather={weather} temperature={temperature}/> 
+          : <Loading/>
+        }
+      </div>
+    </div>  
+  </div>
+
+
+
   )
 }
 
