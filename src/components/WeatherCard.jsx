@@ -6,7 +6,6 @@ const WeatherCard = ({weather, temperature}) => {
     const [timeh, setTimeh] = useState(0)
     const [nowd, setNowd] = useState('')
 
-
     //console.log(weather);
     //console.log(weather?.weather[0].description);
     //console.log(temperature);
@@ -14,8 +13,6 @@ const WeatherCard = ({weather, temperature}) => {
     const handlerChangeTemperature = () => {
         setIscelsius(!iscelsius)
     }
-
-
 
     const showTime = () => {
 

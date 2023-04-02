@@ -152,11 +152,9 @@ button {
         justify-content: center;
         align-items: center;
         padding: 1rem;
-        width: 700px;
+        width: 450px;
         gap: 1rem;
     }
-
-
 
     .timeLocation {
         display: flex;

@@ -57,14 +57,90 @@ useEffect(() => {
   
   const typeWeather = weather?.weather[0].description
 
-  switch (typeWeather) {
-    case 'light rain'://'scattered clouds    
-      setBgvideo(<source src='/video/light-rain.mp4'  type="video/mp4"></source>)
+  switch (typeWeather) {//typeWeather
+
+    //Thunderstorm
+    case 'thunderstorm with light rain':
+    case 'thunderstorm with rain':
+    case 'thunderstorm with heavy rain':
+    case 'light thunderstorm':
+    case 'thunderstorm':
+    case 'heavy thunderstorm':
+    case 'ragged thunderstorm':
+    case 'thunderstorm with light drizzle':
+    case 'thunderstorm with drizzle':
+    case 'thunderstorm with heavy drizzle':
+      setBgvideo(<source src='/video/thunderstorm.mp4'  type="video/mp4"></source>)
     break;
-  
-    case 'overcast clouds':    
-      setBgvideo(<source src='/video/atardecer-153976.mp4'  type="video/mp4"></source>)    
+
+    //Drizzle
+    case 'light intensity drizzle':
+    case 'drizzle':
+    case 'heavy intensity drizzle':
+    case 'light intensity drizzle rain':
+    case 'drizzle rain':
+    case 'heavy intensity drizzle rain':
+    case 'shower rain and drizzle':
+    case 'heavy shower rain and drizzle':
+    case 'shower drizzle':
+      setBgvideo(<source src='/video/drizzle.mp4'  type="video/mp4"></source>)
     break;
+
+    //Rain
+    case 'light rain':
+    case 'moderate rain':
+    case 'heavy intensity rain':
+    case 'very heavy rain':
+    case 'extreme rain':
+    case 'freezing rain':
+    case 'light intensity shower rain':
+    case 'shower rain':
+    case 'heavy intensity shower rain':
+    case 'ragged shower rain':
+      setBgvideo(<source src='/video/rain.mp4'  type="video/mp4"></source>)
+    break;
+    
+    //Snow
+    case 'light snow':
+    case 'snow':
+    case 'heavy snow':
+    case 'sleet':
+    case 'light shower sleet':
+    case 'shower sleet':
+    case 'light rain and snow':
+    case 'rain and snow':
+    case 'light shower snow':
+    case 'shower snow':
+    case 'heavy shower snow':
+      setBgvideo(<source src='/video/snow.mp4'  type="video/mp4"></source>)
+    break;
+
+    //Atmosphere
+    case 'Mist':
+    case 'Smoke':
+    case 'Haze':
+    case 'Dust':
+    case 'Fog	fog':
+    case 'Sand':
+    case 'Dust':
+    case 'Ash':
+    case 'Squall':
+    case 'Tornado':
+      setBgvideo(<source src='/video/atmosphere.mp4'  type="video/mp4"></source>)
+    break;
+
+    //Clear
+    case 'clear sky':    
+      setBgvideo(<source src='/video/clear2.mp4'  type="video/mp4"></source>)    
+    break;
+    
+    //Clouds
+    case 'few clouds':
+    case 'scattered clouds':
+    case 'broken clouds':
+    case 'overcast clouds':  
+      setBgvideo(<source src='/video/clouds.mp4'  type="video/mp4"></source>)    
+    break;    
   } 
 
 }, [weather])
