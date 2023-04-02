@@ -30,11 +30,12 @@ button {
     align-items: center;
     padding: 1rem;
     width: 300px;
-    gap: 0.5rem;
+    
 }
 
 .title h1 {
     font-size: 40px;
+    margin: 0.5rem;
 }
 
 .timeLocation {
@@ -43,7 +44,7 @@ button {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    
+    margin: 0.5rem;
 }
 
 .info {    
@@ -52,6 +53,7 @@ button {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin: 1rem;
 }
 
 .iconWewather{
