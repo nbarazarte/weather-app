@@ -40,6 +40,13 @@ button:hover {
     width: 300px;
 }
 
+.weatherCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
 .title h1 {
     font-size: 40px;
     margin: 0.5rem;
@@ -50,8 +57,8 @@ button:hover {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    width: 80%;
-    /* background-color: red; */
+    width: 100%;
+    /* background-color: red;  */
 }
 
 .timeLocation {
@@ -66,21 +73,20 @@ button:hover {
 #divLocation{
     display: none;
     width: 100%;
-    margin: 0.5rem;
 }
 
 #currentLocation{
     display: inline;
-    width: 100%;
+    width: 100%;    
     text-align: center;
+    /* background-color: green; */
+    padding: 0.5rem;
 }
 
 .selectLocation{
     background-color: white;
     color: #000000;
-    font-weight: bold;
-    width: 100%;
-    margin: 0.5rem;
+    font-weight: bold;    
     cursor: pointer;
     border-radius: 15px;
 }

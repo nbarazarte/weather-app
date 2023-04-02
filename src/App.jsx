@@ -3,10 +3,18 @@ import './App.css'
 import axios from 'axios';
 import WeatherCard from './components/WeatherCard';
 import Loading from './components/Loading';
-
+import Select from 'react-select'
 import 'boxicons'
 
 function App() {
+
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
+  const [timeh, setTimeh] = useState('loading...')
+  const [nowd, setNowd] = useState('')
 
 const [latlon, setLatlon] = useState()
 const [weather, setWeather] = useState()
@@ -121,16 +129,16 @@ useEffect(() => {
     break;
 
     //Atmosphere
-    case 'Mist':
-    case 'Smoke':
-    case 'Haze':
-    case 'Dust':
-    case 'Fog	fog':
-    case 'Sand':
-    case 'Dust':
-    case 'Ash':
-    case 'Squall':
-    case 'Tornado':
+    case 'mist':
+    case 'smoke':
+    case 'haze':
+    case 'sand/dust whirls':
+    case 'fog':
+    case 'sand':
+    case 'dust':
+    case 'volcanic ash':
+    case 'squalls':
+    case 'tornado':
       setBgvideo(<source src='/video/atmosphere.mp4'  type="video/mp4"></source>)
     break;
 
@@ -150,6 +158,58 @@ useEffect(() => {
 
 }, [weather])
 
+
+const showTime = () => {
+
+  const today = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  options.timeZone = timezone//'UTC';
+  //options.timeZoneName = 'short';
+  //const now = today.toLocaleString('en-US', options);
+  //const nowH = today.toLocaleTimeString('en-US');
+
+  setNowd(today.toLocaleString('en-US', options))
+
+  var date = new Date();
+  var h = date.getHours(); // 0 - 23
+  var m = date.getMinutes(); // 0 - 59
+  var s = date.getSeconds(); // 0 - 59
+  var session = "AM";
+  
+  if(h == 0){
+      h = 12;
+  }
+  
+  if(h > 12){
+      h = h - 12;
+      session = "PM";
+  }
+  
+  h = (h < 10) ? "0" + h : h;
+  m = (m < 10) ? "0" + m : m;
+  s = (s < 10) ? "0" + s : s;
+  
+  var time = h + ":" + m + ":" + s + " " + session;
+  setTimeh(time); 
+}
+
+setTimeout(showTime, 1000);
+
+const showSelectLocation = () => {
+  
+  let element = document.getElementById('divLocation').style.display
+  if (element === 'inline') {
+      document.getElementById('divLocation').style.display = 'none'
+      document.getElementById('currentLocation').style.display = 'inline'
+      
+  }else{
+      document.getElementById('divLocation').style.display = 'inline'
+      document.getElementById('currentLocation').style.display = 'none'
+  }
+
+}
+
   return (
 
   <div>
@@ -159,10 +219,39 @@ useEffect(() => {
     </video>
 
     <div className="content">
-      <div className="App">
+      <div className="weather">
+
         {
           weather
-          ? <WeatherCard weather={weather} temperature={temperature}/> 
+          ?
+          <>
+            <header className="title">
+                <h1>Weather App</h1>
+            </header>
+
+            <section className="location">
+                
+                <div id='currentLocation'>
+                  <h3>
+                      {weather?.name}, {weather?.sys.country}
+                  </h3>
+                </div>            
+
+                <div id='divLocation' >
+                    <Select className="selectLocation" options={options} />
+                </div>
+
+                <button onClick={showSelectLocation} className="changeLocation">
+                  <i className='bx bx-map'></i>
+                </button>
+            </section>  
+
+            <section className="timeLocation">
+                <h3>{nowd}</h3>
+                <h3>{timeh}</h3>
+            </section>           
+            <WeatherCard weather={weather} temperature={temperature}/> 
+          </>
           : <Loading/>
         }
       </div>
