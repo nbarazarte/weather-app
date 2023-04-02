@@ -71,8 +71,18 @@ const WeatherCard = ({weather, temperature}) => {
         </section>          
 
         <section className="iconWewather">
-            
-            <img className="iconWeather" src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`} />
+            <div  className="icon_temperature">
+                <img className="iconWeather" src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`} />
+                <article>
+                    <h1 className="temperature">
+                        {
+                            iscelsius
+                            ? `${temperature?.celsius} °C`
+                            : `${temperature?.farenheit} °F`
+                        }
+                    </h1>
+                </article>
+            </div>            
             <h1>
                 {weather?.weather[0].description}
             </h1>            
@@ -89,15 +99,7 @@ const WeatherCard = ({weather, temperature}) => {
                 </ul>
             </article>
 
-            <article>
-                <h1 className="temperature">
-                    {
-                        iscelsius
-                        ? `${temperature?.celsius} °C`
-                        : `${temperature?.farenheit} °F`
-                    }
-                </h1>
-            </article>
+
 
         </section>
 

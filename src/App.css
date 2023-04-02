@@ -30,7 +30,6 @@ button {
     align-items: center;
     padding: 1rem;
     width: 300px;
-    
 }
 
 .title h1 {
@@ -64,12 +63,19 @@ button {
 }
 
 .iconWewather img {
-    width: 180px;
+    width: 100px;
 }
 
 .iconWewather h1 {
-    font-size: 40px;
+    font-size: 30px;
     color: white;
+}
+
+.icon_temperature{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;   
 }
 
 .temperature {
@@ -171,5 +177,22 @@ button {
         align-items: center;
         gap: 2rem;
     }
+
+    .icon_temperature{        
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;        
+    }
+
+    .iconWewather img {
+        width: 180px;
+    }
+    
+    .iconWewather h1 {
+        font-size: 50px;
+        color: white;
+    }
+
 
   }
