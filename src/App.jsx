@@ -58,7 +58,7 @@ useEffect(() => {
 
   <div>
     <video autoPlay muted loop id="myVideo">
-      <source src='https://cdn.pixabay.com/vimeo/806571973/atardecer-153976.mp4?width=1920&expiry=1680376190&hash=f70238172c8bff9a42c10589f7c1e924f0d5c139' type="video/mp4"></source>
+      <source src='/video/atardecer-153976.mp4' type="video/mp4"></source>
       Your browser does not support HTML5 video.
     </video>
 

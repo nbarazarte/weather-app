@@ -17,10 +17,13 @@ body {
 button {
     border-radius: 3px;
     padding: 0.5rem;
+    cursor: pointer;
 }
 
 .weather{
-    background-color: aquamarine;
+    background-color: black;
+    color:white;
+    opacity: 0.6;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
