@@ -1,9 +1,16 @@
 import { useState } from "react";
-
+import Select from 'react-select'
 const WeatherCard = ({weather, temperature}) => {
 
+
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ]
+
     const [iscelsius, setIscelsius] = useState(true)
-    const [timeh, setTimeh] = useState(0)
+    const [timeh, setTimeh] = useState('loading...')
     const [nowd, setNowd] = useState('')
 
     //console.log(weather);
@@ -51,6 +58,20 @@ const WeatherCard = ({weather, temperature}) => {
     
     setTimeout(showTime, 1000);
 
+    const showSelectLocation = () => {
+        
+        let element = document.getElementById('divLocation').style.display
+        if (element === 'inline') {
+            document.getElementById('divLocation').style.display = 'none'
+            document.getElementById('currentLocation').style.display = 'inline'
+            
+        }else{
+            document.getElementById('divLocation').style.display = 'inline'
+            document.getElementById('currentLocation').style.display = 'none'
+        }
+
+    }
+
   return (
 
     <article className="weather">
@@ -60,11 +81,17 @@ const WeatherCard = ({weather, temperature}) => {
         </header>
 
         <section className="location">
-            <i class='bx bx-map'></i>
-            <h3>{weather?.name}, {weather?.sys.country}</h3>
             
-            <button className="changeLocation">
-                <i class='bx bx-map-alt'></i>
+            <h3 id='currentLocation'>
+                {weather?.name}, {weather?.sys.country}
+            </h3>
+
+            <div id='divLocation' >
+                <Select className="selectLocation" options={options} />
+            </div>
+
+            <button onClick={showSelectLocation} className="changeLocation">
+                <i class='bx bx-map'></i>
             </button>
         </section>  
 

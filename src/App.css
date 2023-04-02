@@ -27,7 +27,6 @@ button:hover {
     font-weight: bold;
 }
 
-
 .weather{
     background-color: black;
     color:white;
@@ -51,6 +50,8 @@ button:hover {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+    width: 80%;
+    /* background-color: red; */
 }
 
 .timeLocation {
@@ -60,6 +61,28 @@ button:hover {
     align-items: center;
     gap: 1rem;
     margin: 0.5rem;
+}
+
+#divLocation{
+    display: none;
+    width: 100%;
+    margin: 0.5rem;
+}
+
+#currentLocation{
+    display: inline;
+    width: 100%;
+    text-align: center;
+}
+
+.selectLocation{
+    background-color: white;
+    color: #000000;
+    font-weight: bold;
+    width: 100%;
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 15px;
 }
 
 .info {    

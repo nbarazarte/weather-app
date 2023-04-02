@@ -36,6 +36,9 @@ useEffect(() => {
 
     const apikey = 'e7a1a2cfa98becafeefff6f39e6543e8'
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latlon.lat}&lon=${latlon.lon}&appid=${apikey}`
+
+    //const url2 = `http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${apikey}`
+
     axios.get(url)
     .then(res => {
 
