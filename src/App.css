@@ -5,7 +5,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;   
-    font-family: Poiret One; 
+    font-family: Poiret One;
+    letter-spacing: 2px;
 }
 
 html {
@@ -17,7 +18,15 @@ button {
     padding: 0.5rem;
     cursor: pointer;
     border: none;
+    font-weight: bold;
 }
+
+button:hover {
+    background-color: white;
+    color: #000000;
+    font-weight: bold;
+}
+
 
 .weather{
     background-color: black;
@@ -73,8 +82,18 @@ button {
     width: 100px;
 }
 
-.bx-map-alt {
+.changeLocation {
     cursor: pointer;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+.changeLocation:hover {
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: white;
+    color: #000000;
+    font-size: 16px;
 }
 
 .iconWewather h1 {

@@ -63,7 +63,9 @@ const WeatherCard = ({weather, temperature}) => {
             <i class='bx bx-map'></i>
             <h3>{weather?.name}, {weather?.sys.country}</h3>
             
-            <i class='bx bx-map-alt'></i>
+            <button className="changeLocation">
+                <i class='bx bx-map-alt'></i>
+            </button>
         </section>  
 
         <section className="timeLocation">
