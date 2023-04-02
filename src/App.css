@@ -30,7 +30,7 @@ button {
     align-items: center;
     padding: 1rem;
     width: 300px;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 .title h1 {
