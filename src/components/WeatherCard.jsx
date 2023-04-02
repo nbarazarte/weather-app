@@ -4,24 +4,31 @@ const WeatherCard = ({weather, temperature}) => {
 
     const [iscelsius, setIscelsius] = useState(true)
     const [timeh, setTimeh] = useState(0)
+    const [nowd, setNowd] = useState('')
+
 
     //console.log(weather);
-    //console.log(wheather?.wheather[0].description);
+    //console.log(weather?.weather[0].description);
     //console.log(temperature);
 
     const handlerChangeTemperature = () => {
         setIscelsius(!iscelsius)
     }
 
-    const today = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    options.timeZone = timezone//'UTC';
-    //options.timeZoneName = 'short';
-    const now = today.toLocaleString('en-US', options);
-    //const nowH = today.toLocaleTimeString('en-US');
+
 
     const showTime = () => {
+
+        const today = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        options.timeZone = timezone//'UTC';
+        //options.timeZoneName = 'short';
+        //const now = today.toLocaleString('en-US', options);
+        //const nowH = today.toLocaleTimeString('en-US');
+
+        setNowd(today.toLocaleString('en-US', options))
+
         var date = new Date();
         var h = date.getHours(); // 0 - 23
         var m = date.getMinutes(); // 0 - 59
@@ -52,7 +59,7 @@ const WeatherCard = ({weather, temperature}) => {
     <article className="weather">
         <h1>Weather App</h1>
         <h3>{weather?.name}, {weather?.sys.country}</h3>
-        <h3>{now}</h3>
+        <h3>{nowd}</h3>
         <h3>{timeh}</h3>
         <section>
             <header>
@@ -73,15 +80,15 @@ const WeatherCard = ({weather, temperature}) => {
             </article>
         </section>
         <footer>
-            <h2>
+            <h1 className="temperature">
                 {
                     iscelsius
-                    ? `${temperature?.celsius} C`
-                    : `${temperature?.farenheit} F`
+                    ? `${temperature?.celsius} °C`
+                    : `${temperature?.farenheit} °F`
                 }
-            </h2>
+            </h1>
         </footer>
-        <button onClick={handlerChangeTemperature}>Change to {iscelsius ? 'F' : 'C'}</button>
+        <button onClick={handlerChangeTemperature}>Change to {iscelsius ? '°F' : '°C'}</button>
     </article>
   )
 }

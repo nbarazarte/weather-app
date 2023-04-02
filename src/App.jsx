@@ -9,6 +9,7 @@ function App() {
 const [latlon, setLatlon] = useState()
 const [weather, setWeather] = useState()
 const [temperature, setTemperature] = useState()
+const [bgvideo, setBgvideo] = useState()
 
 useEffect(() => {
 
@@ -52,13 +53,27 @@ useEffect(() => {
 
 }, [latlon])
 
-//console.log(wheather);
+useEffect(() => {
+  
+  const typeWeather = weather?.weather[0].description
+
+  switch (typeWeather) {
+    case 'light rain'://'overcast clouds'://scattered clouds    
+      setBgvideo(<source src='/video/light-rain.mp4'  type="video/mp4"></source>)
+    break;
+  
+    case 'scattered clouds':    
+      setBgvideo(<source src='/video/atardecer-153976.mp4'  type="video/mp4"></source>)    
+    break;
+  } 
+
+}, [weather])
 
   return (
 
   <div>
     <video autoPlay muted loop id="myVideo">
-      <source src='/video/atardecer-153976.mp4' type="video/mp4"></source>
+      {bgvideo}
       Your browser does not support HTML5 video.
     </video>
 

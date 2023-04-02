@@ -1,8 +1,15 @@
 import React from 'react'
 
 const Loading = () => {
-  return (
-    <h1>Loading....</h1>
+  return (    
+
+    <div className="loader-circle">
+      <p className="loader-content">Loading...</p>
+      <div className="loader-line-mask">
+        <div className="loader-line"></div>
+      </div>
+    </div>
+
   )
 }
 
