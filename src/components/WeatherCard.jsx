@@ -3,7 +3,9 @@ import { useState } from "react";
 const WeatherCard = ({weather, temperature}) => {
 
     const [iscelsius, setIscelsius] = useState(true)
-    console.log(weather);
+    const [timeh, setTimeh] = useState(0)
+
+    //console.log(weather);
     //console.log(wheather?.wheather[0].description);
     //console.log(temperature);
 
@@ -11,12 +13,47 @@ const WeatherCard = ({weather, temperature}) => {
         setIscelsius(!iscelsius)
     }
 
+    const today = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    options.timeZone = timezone//'UTC';
+    //options.timeZoneName = 'short';
+    const now = today.toLocaleString('en-US', options);
+    //const nowH = today.toLocaleTimeString('en-US');
+
+    const showTime = () => {
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+        var s = date.getSeconds(); // 0 - 59
+        var session = "AM";
+        
+        if(h == 0){
+            h = 12;
+        }
+        
+        if(h > 12){
+            h = h - 12;
+            session = "PM";
+        }
+        
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+        
+        var time = h + ":" + m + ":" + s + " " + session;
+        setTimeh(time); 
+    }
+    
+    setTimeout(showTime, 1000);
+
   return (
 
     <article className="weather">
         <h1>Weather App</h1>
-        <h2>{weather?.name}, {weather?.sys.country}</h2>
-
+        <h3>{weather?.name}, {weather?.sys.country}</h3>
+        <h3>{now}</h3>
+        <h3>{timeh}</h3>
         <section>
             <header>
                 <img src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`} />
@@ -27,6 +64,7 @@ const WeatherCard = ({weather, temperature}) => {
             
             <article>
                 <h3>{weather?.weather[0].description}</h3>
+                
                 <ul>
                     <li><span>Wind Speed: </span>{weather?.wind.speed} m/s</li>
                     <li><span>Clouds: </span>{weather?.clouds.all} %</li>
