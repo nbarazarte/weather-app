@@ -57,37 +57,53 @@ const WeatherCard = ({weather, temperature}) => {
   return (
 
     <article className="weather">
-        <h1>Weather App</h1>
-        <h3>{weather?.name}, {weather?.sys.country}</h3>
-        <h3>{nowd}</h3>
-        <h3>{timeh}</h3>
-        <section>
-            <header>
-                <img src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`} />
-            </header>
+
+        <header className="title">
+            <h1>Weather App</h1>
+        </header>
+
+        <section className="location">
+            <h3>{weather?.name}, {weather?.sys.country}</h3>
+        </section>  
+
+        <section className="timeLocation">
+
+            <h3>{nowd}</h3>
+            <h3>{timeh}</h3>
+            
+        </section>          
+
+        <section className="iconWewather">
+            
+            <img className="iconWeather" src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`} />
+            <h1>
+                {weather?.weather[0].description}
+            </h1>            
+            
         </section>
 
-        <section>
-            
+        <section className="info">
+
             <article>
-                <h3>{weather?.weather[0].description}</h3>
-                
                 <ul>
                     <li><span>Wind Speed: </span>{weather?.wind.speed} m/s</li>
                     <li><span>Clouds: </span>{weather?.clouds.all} %</li>
                     <li><span>Pressure:</span>{weather?.main.pressure} hPa</li>
                 </ul>
             </article>
+
+            <article>
+                <h1 className="temperature">
+                    {
+                        iscelsius
+                        ? `${temperature?.celsius} °C`
+                        : `${temperature?.farenheit} °F`
+                    }
+                </h1>
+            </article>
+
         </section>
-        <footer>
-            <h1 className="temperature">
-                {
-                    iscelsius
-                    ? `${temperature?.celsius} °C`
-                    : `${temperature?.farenheit} °F`
-                }
-            </h1>
-        </footer>
+
         <button onClick={handlerChangeTemperature}>Change to {iscelsius ? '°F' : '°C'}</button>
     </article>
   )

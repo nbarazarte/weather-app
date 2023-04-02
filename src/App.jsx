@@ -58,11 +58,11 @@ useEffect(() => {
   const typeWeather = weather?.weather[0].description
 
   switch (typeWeather) {
-    case 'light rain'://'overcast clouds'://scattered clouds    
+    case 'light rain'://'scattered clouds    
       setBgvideo(<source src='/video/light-rain.mp4'  type="video/mp4"></source>)
     break;
   
-    case 'scattered clouds':    
+    case 'overcast clouds':    
       setBgvideo(<source src='/video/atardecer-153976.mp4'  type="video/mp4"></source>)    
     break;
   } 
@@ -87,8 +87,6 @@ useEffect(() => {
       </div>
     </div>  
   </div>
-
-
 
   )
 }
