@@ -37,6 +37,13 @@ button {
     margin: 0.5rem;
 }
 
+.location{
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .timeLocation {
     display: flex;
     flex-direction: column;
@@ -64,6 +71,10 @@ button {
 
 .iconWewather img {
     width: 100px;
+}
+
+.bx-map-alt {
+    cursor: pointer;
 }
 
 .iconWewather h1 {
@@ -181,7 +192,7 @@ button {
     .icon_temperature{        
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;        
     }
 
@@ -193,6 +204,5 @@ button {
         font-size: 50px;
         color: white;
     }
-
 
   }

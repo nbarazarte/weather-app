@@ -4,6 +4,8 @@ import axios from 'axios';
 import WeatherCard from './components/WeatherCard';
 import Loading from './components/Loading';
 
+import 'boxicons'
+
 function App() {
 
 const [latlon, setLatlon] = useState()

@@ -60,7 +60,10 @@ const WeatherCard = ({weather, temperature}) => {
         </header>
 
         <section className="location">
+            <i class='bx bx-map'></i>
             <h3>{weather?.name}, {weather?.sys.country}</h3>
+            
+            <i class='bx bx-map-alt'></i>
         </section>  
 
         <section className="timeLocation">
@@ -75,6 +78,7 @@ const WeatherCard = ({weather, temperature}) => {
                 <img className="iconWeather" src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`} />
                 <article>
                     <h1 className="temperature">
+                    <i class='bx bxs-thermometer'></i>
                         {
                             iscelsius
                             ? `${temperature?.celsius} °C`
