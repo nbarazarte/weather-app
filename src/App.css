@@ -218,8 +218,9 @@ button:hover {
 
 #searching{
     text-align: center;
-    margin: 1rem;
-    display: none;     
+    margin: 0.5rem;
+    display: none;
+    padding: 2rem;  
 }
 
 .time {

@@ -217,6 +217,7 @@ function App() {
             </header>
             <div id="searching">
               <FontAwesomeIcon icon={faCloudArrowDown} beat size='2xl'/>
+              <p>Looking for weather data</p>
             </div>
             <section className="location">
                 
