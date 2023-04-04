@@ -9,20 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationPinLock } from '@fortawesome/free-solid-svg-icons'
 function App() {
 
-  const options = [
-    { value: 'Madrid', label: 'Madrid' },
-    { value: 'London', label: 'London' },
-    { value: 'Praga', label: 'Praga' },
-    { value: 'Namibia', label: 'Namibia' },
-    { value: 'Guinea', label: 'Guinea' },
-    { value: 'Vanuatu', label: 'Vanuatu' },
-    { value: 'France', label: 'France' },
-    { value: 'Andorra', label: 'Andorra' },
-    { value: 'Azerbaijan', label: 'Azerbaijan' },
-    { value: 'Denmark', label: 'Denmark' },
-
-  ]
-
   const [hasError, setHasError] = useState(false)
   const [timeh, setTimeh] = useState('loading...')
   const [nowd, setNowd] = useState('')
@@ -30,6 +16,50 @@ function App() {
   const [weather, setWeather] = useState()
   const [temperature, setTemperature] = useState()
   const [location, setLocation] = useState('')
+  const [countries, setCountries] = useState()
+
+  useEffect(() => {
+
+/*      const options = [
+      { value: 'Madrid', label: 'Madrid' },
+      { value: 'London', label: 'London' },
+      { value: 'Praga', label: 'Praga' },
+      { value: 'Namibia', label: 'Namibia' },
+      { value: 'Guinea', label: 'Guinea' },
+      { value: 'Vanuatu', label: 'Vanuatu' },
+      { value: 'France', label: 'France' },
+      { value: 'Andorra', label: 'Andorra' },
+      { value: 'Azerbaijan', label: 'Azerbaijan' },
+      { value: 'Denmark', label: 'Denmark' },
+      { value: 'Seattle', label: 'Seattle' },
+    ]  */
+    
+    const url = `https://restcountries.com/v3.1/all`
+    axios.get(url)
+    .then(res => {
+      //console.log(res.data.length);
+      //console.log(res.data);
+
+      let nameCountries = []
+      let countries = res.data
+      let obj = {}
+      for (const x of countries) {
+        //console.log(x.name.common);
+        obj = {
+          value: x.name.common,
+          label: x.name.common,
+        }
+        nameCountries.push(obj)
+      }
+      
+      setCountries(nameCountries)
+      //console.log(nameCountries);
+    })
+    .catch(err => console.log(err))
+
+    //setCountries(options)
+  
+  }, [])
 
   useEffect(() => {
 
@@ -92,7 +122,7 @@ function App() {
 
     //console.log(Intl.DateTimeFormat().resolvedOptions());
 
-    options.timeZone = timezone//'UTC';
+    options.timeZone = timezone//'UTC';//timezone//
     //options.timeZoneName = 'short';
     //const now = today.toLocaleString('en-US', options);
     //const nowH = today.toLocaleTimeString('en-US');
@@ -194,7 +224,7 @@ function App() {
                 </div>            
 
                 <div id='divLocation' >
-                    <Select onChange={handlerLocation} className="selectLocation" options={options} />
+                    <Select onChange={handlerLocation} className="selectLocation" options={countries} />
                 </div>
 
                 <button onClick={showSelectLocation} className="changeLocation">

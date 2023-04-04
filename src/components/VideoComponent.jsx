@@ -18,6 +18,10 @@ useEffect(() => {
     videoURL = '/video/rain.mp4'
   }
 
+  if (weather?.weather[0].description.includes('snow')){
+    videoURL = '/video/snow.mp4'
+  }  
+
   if (weather?.weather[0].description.includes('sky')){
     videoURL = '/video/clear2.mp4'
   }
