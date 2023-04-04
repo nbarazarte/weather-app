@@ -89,6 +89,7 @@ button:hover {
     font-weight: bold;    
     cursor: pointer;
     border-radius: 15px;
+    border-color: none;
 }
 
 .info {    
@@ -204,6 +205,12 @@ button:hover {
   }
 
   @keyframes rotate { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);}}
+
+.errormsg{
+    text-align: center;
+    margin: 1rem;    
+}
+
 
   @media (min-width: 700px) {
 
