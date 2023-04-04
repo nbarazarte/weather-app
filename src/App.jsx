@@ -146,7 +146,7 @@ function App() {
     if(location){
 
       const apikey = 'e7a1a2cfa98becafeefff6f39e6543e8'
-      const url = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&appid=${apikey}`
+      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&appid=${apikey}`
 
       axios.get(url)
       .then(res => {
