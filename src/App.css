@@ -172,6 +172,10 @@ button:hover {
     box-shadow: inset 0 0 0 1px       rgba(255,255,255,0.1);
     margin-left: -60px;
     margin-top: -60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .loader-content{
@@ -181,6 +185,7 @@ button:hover {
     transform: translate(-50%, -100%);
     color: rgba(255, 255, 255, 0.8);
     font-family: Arial, sans-serif;
+    padding: 1rem;
   }
 
   .loader-line-mask {
@@ -209,6 +214,17 @@ button:hover {
 .errormsg{
     text-align: center;
     margin: 1rem;    
+}
+
+#searching{
+    text-align: center;
+    margin: 1rem;
+    display: none;     
+}
+
+.time {
+    color: aqua;
+    font-weight: bold;
 }
 
 

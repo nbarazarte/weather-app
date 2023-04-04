@@ -6,11 +6,11 @@ import Loading from './components/Loading';
 import Select from 'react-select'
 import VideoComponent from './components/VideoComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationPinLock } from '@fortawesome/free-solid-svg-icons'
+import { faLocationPinLock,faCloudArrowDown, faHourglassStart } from '@fortawesome/free-solid-svg-icons'
 function App() {
 
   const [hasError, setHasError] = useState(false)
-  const [timeh, setTimeh] = useState('loading...')
+  const [timeh, setTimeh] = useState(<FontAwesomeIcon icon={faHourglassStart} spin />)
   const [nowd, setNowd] = useState('')
   const [latlon, setLatlon] = useState()
   const [weather, setWeather] = useState()
@@ -107,6 +107,7 @@ function App() {
         //Oculto el select de los paises:
         document.getElementById('divLocation').style.display = 'none'
         document.getElementById('currentLocation').style.display = 'inline'
+        document.getElementById('searching').style.display = 'none'
 
       })
       .catch(err => console.log(err))
@@ -174,7 +175,7 @@ function App() {
   useEffect(() => {
     
     if(location){
-
+      document.getElementById('searching').style.display = 'inline'
       const apikey = 'e7a1a2cfa98becafeefff6f39e6543e8'
       const url = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&appid=${apikey}`
 
@@ -214,7 +215,9 @@ function App() {
             <header className="title">
                 <h1>Weather App</h1>
             </header>
-
+            <div id="searching">
+              <FontAwesomeIcon icon={faCloudArrowDown} beat size='2xl'/>
+            </div>
             <section className="location">
                 
                 <div id='currentLocation'>
@@ -234,7 +237,7 @@ function App() {
 
             <section className="timeLocation">
                 <h3>{nowd}</h3>
-                <h3>{timeh}</h3>
+                <h3 className='time'>{timeh}</h3>
             </section>           
             <WeatherCard weather={weather} temperature={temperature}/> 
           </>
