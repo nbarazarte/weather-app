@@ -201,9 +201,12 @@ function App() {
         hasError
         ? 
           <div className="errorDiv">
+              <header className="title">
+                <h1>Weather App</h1>
+              </header>
             <p className='errormsg'>
-              Se requieren permisos <FontAwesomeIcon icon={faLocationPinLock} beat /> <br/>
-              Active la ubicación de su dispositivo
+              Permits are required <FontAwesomeIcon icon={faLocationPinLock} beat style={{color: "#ed0c39",}}/> <br/>              
+              Activate the location of your device
             </p>
           </div>
         : 
@@ -213,6 +216,9 @@ function App() {
 
               <header className="title">
                 <h1>Weather App</h1>
+                <a href='https://github.com/nbarazarte/weather-app' target='_blank'>
+                  <i className='bx bxl-github'></i>
+                </a>
               </header>
               
               <div id="searching">
