@@ -195,60 +195,59 @@ function App() {
   }, [location])
 
   return (
-
-  <div>
-
-    <VideoComponent weather={weather} />
-
-    <div className="content">
-      <div className="weather">
-        {
-          hasError 
-          ? <p className='errormsg'>
+    <div>
+      <VideoComponent weather={weather} />
+      {
+        hasError
+        ? 
+          <div className="errorDiv">
+            <p className='errormsg'>
               Se requieren permisos <FontAwesomeIcon icon={faLocationPinLock} beat /> <br/>
               Active la ubicación de su dispositivo
-             </p>
-          : 
-          weather
-          ?
-          <>
-            <header className="title">
+            </p>
+          </div>
+        : 
+        weather
+        ? <div className="content">
+            <div className="weather">
+
+              <header className="title">
                 <h1>Weather App</h1>
-            </header>
-            <div id="searching">
-              <FontAwesomeIcon icon={faCloudArrowDown} beat size='2xl'/>
-              <p>Looking for weather data</p>
-            </div>
-            <section className="location">
-                
+              </header>
+              
+              <div id="searching">
+                <FontAwesomeIcon icon={faCloudArrowDown} beat size='2xl'/>
+                <p>Looking for weather data</p>
+              </div>
+
+              <section className="location">
+
                 <div id='currentLocation'>
                   <h3>
-                      {weather?.name}, {weather?.sys.country} 
+                    {weather?.name}, {weather?.sys.country} 
                   </h3>
                 </div>            
 
                 <div id='divLocation' >
-                    <Select onChange={handlerLocation} className="selectLocation" options={countries} />
+                  <Select onChange={handlerLocation} className="selectLocation" options={countries} />
                 </div>
 
                 <button onClick={showSelectLocation} className="changeLocation">
                   <i className='bx bx-map'></i>
                 </button>
-            </section>  
+              </section>  
 
-            <section className="timeLocation">
-                <h3>{nowd}</h3>
-                <h3 className='time'>{timeh}</h3>
-            </section>           
-            <WeatherCard weather={weather} temperature={temperature}/> 
-          </>
-          : 
-          <Loading/>
-        }
-      </div>
-    </div>  
-  </div>
-
+              <section className="timeLocation">
+                  <h3>{nowd}</h3>
+                  <h3 className='time'>{timeh}</h3>
+              </section>           
+              <WeatherCard weather={weather} temperature={temperature}/>
+            </div>
+          </div> 
+        : 
+        <Loading/>
+      }
+    </div>
   )
 }
 

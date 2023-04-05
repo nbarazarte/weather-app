@@ -4,11 +4,9 @@ import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons'
 const Loading = () => {
   return (    
 
-    <div className="loader-circle">
-      Loadding...
-      <p className="loader-content">
-        <FontAwesomeIcon icon={faCloudArrowDown} beat size='2xl'/>
-      </p>
+    <div className="loader-circle">            
+      <FontAwesomeIcon icon={faCloudArrowDown} beat size='2xl'/>
+      Loadding
       <div className="loader-line-mask">
         <div className="loader-line"></div>
       </div>

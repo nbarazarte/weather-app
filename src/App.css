@@ -176,16 +176,7 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .loader-content{
-    position: absolute;
-    left: 50%;
-    top: 44%;
-    transform: translate(-50%, -100%);
-    color: rgba(255, 255, 255, 0.8);
-    font-family: Arial, sans-serif;
-    padding: 1rem;
+    gap:1rem
   }
 
   .loader-line-mask {
@@ -211,9 +202,17 @@ button:hover {
 
   @keyframes rotate { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);}}
 
+  .errorDiv {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;    
+  }
+
 .errormsg{
     text-align: center;
-    margin: 1rem;    
+    margin: 1rem;
 }
 
 #searching{
