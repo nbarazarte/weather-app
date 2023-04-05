@@ -36,7 +36,7 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem;
     width: 300px;
 }
 
@@ -48,7 +48,7 @@ button:hover {
 }
 
 .title  {
-    font-size: 40px;
+    font-size: 34px;
     margin: 0.5rem;
     display: flex;
     justify-content: center;
@@ -56,12 +56,13 @@ button:hover {
 }
 
 .title h1 {
-    font-size: 40px;
+    font-size: 34px;
     margin: 0.5rem;
 }
 
 .title .bx {
     color: green;
+    /* font-size: 2px; */
 }
 
 article .bx {

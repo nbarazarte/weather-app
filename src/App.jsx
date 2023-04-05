@@ -7,6 +7,8 @@ import Select from 'react-select'
 import VideoComponent from './components/VideoComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationPinLock,faCloudArrowDown, faHourglassStart } from '@fortawesome/free-solid-svg-icons'
+import { Tooltip } from '@chakra-ui/tooltip';
+
 function App() {
 
   const [hasError, setHasError] = useState(false)
@@ -216,9 +218,11 @@ function App() {
 
               <header className="title">
                 <h1>Weather App</h1>
-                <a href='https://github.com/nbarazarte/weather-app' target='_blank'>
-                  <i className='bx bxl-github'></i>
-                </a>
+                <Tooltip label="Go to my Github">
+                  <a href='https://github.com/nbarazarte/weather-app' target='_blank'>
+                    <i className='bx bxl-github'></i>
+                  </a>
+                </Tooltip>
               </header>
               
               <div id="searching">
@@ -238,9 +242,12 @@ function App() {
                   <Select onChange={handlerLocation} className="selectLocation" options={countries} />
                 </div>
 
-                <button onClick={showSelectLocation} className="changeLocation">
-                  <i className='bx bx-map'></i>
-                </button>
+                <Tooltip label="Change location">
+                  <button onClick={showSelectLocation} className="changeLocation">
+                    <i className='bx bx-map'></i>
+                  </button>
+                </Tooltip>
+
               </section>  
 
               <section className="timeLocation">
