@@ -64,9 +64,9 @@ button:hover {
     width: 40px;
 }
 
-.title .bx {
+.bxl-github {
     color: green;
-    /* font-size: 2px; */
+    font-size: 30px;
 }
 
 article .bx {
@@ -254,7 +254,7 @@ article .bx {
     .title img {
         width: 65px;
     }
-    
+
     .weather{
         background-color: black;
         /* color:white; */
