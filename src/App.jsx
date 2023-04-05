@@ -218,11 +218,7 @@ function App() {
 
               <header className="title">
                 <h1>Weather App</h1>
-                <Tooltip label="Go to my Github">
-                  <a href='https://github.com/nbarazarte/weather-app' target='_blank'>
-                    <i className='bx bxl-github'></i>
-                  </a>
-                </Tooltip>
+                <img src='/public/weather.svg'/>
               </header>
               
               <div id="searching">
@@ -242,7 +238,7 @@ function App() {
                   <Select onChange={handlerLocation} className="selectLocation" options={countries} />
                 </div>
 
-                <Tooltip label="Change location">
+                <Tooltip label="Change location" placement='top-end'>
                   <button onClick={showSelectLocation} className="changeLocation">
                     <i className='bx bx-map'></i>
                   </button>
@@ -255,6 +251,11 @@ function App() {
                   <h3 className='time'>{timeh}</h3>
               </section>           
               <WeatherCard weather={weather} temperature={temperature}/>
+                <Tooltip label="Go to my Github" placement='auto-start'>
+                  <a href='https://github.com/nbarazarte/weather-app' target='_blank'>
+                    <i className='bx bxl-github'></i>
+                  </a>
+                </Tooltip>
             </div>
           </div> 
         : 

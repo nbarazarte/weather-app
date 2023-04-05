@@ -60,6 +60,10 @@ button:hover {
     margin: 0.5rem;
 }
 
+.title img {
+    width: 40px;
+}
+
 .title .bx {
     color: green;
     /* font-size: 2px; */
@@ -219,13 +223,13 @@ article .bx {
 
   @keyframes rotate { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);}}
 
-  .errorDiv {    
+.errorDiv {    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;    
-  }
+}
 
 .errormsg{
     text-align: center;
@@ -245,9 +249,12 @@ article .bx {
     font-weight: bold;
 }
 
-
   @media (min-width: 700px) {
 
+    .title img {
+        width: 65px;
+    }
+    
     .weather{
         background-color: black;
         /* color:white; */
