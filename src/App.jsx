@@ -218,7 +218,7 @@ function App() {
 
               <header className="title">
                 <h1>Weather App</h1>
-                <img src='/public/weather.svg'/>
+                <img src='/weather.svg'/>
               </header>
               
               <div id="searching">
