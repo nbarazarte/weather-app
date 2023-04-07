@@ -91,9 +91,32 @@ article .bx {
     margin: 0.5rem;
 }
 
+.myInput{
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#citiesList {
+    list-style: none;
+    cursor: pointer;
+    /* font-size: 12px;     */
+    padding: 1rem;
+}
+
 #divLocation{
     display: none;
     width: 100%;
+}
+
+.locationContent{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #currentLocation{
@@ -248,6 +271,15 @@ article .bx {
     color: aqua;
     font-weight: bold;
 }
+
+.optionsList {
+    padding: 0.2rem;
+}
+
+.optionsList:hover {
+    color: aqua
+}
+
 
   @media (min-width: 700px) {
 

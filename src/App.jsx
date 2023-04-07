@@ -17,52 +17,11 @@ function App() {
   const [latlon, setLatlon] = useState()
   const [weather, setWeather] = useState()
   const [temperature, setTemperature] = useState()
-  const [location, setLocation] = useState('')
-  const [countries, setCountries] = useState()
+  const [idciudad, setIdciudad] = useState()
+  const [cities, setCities] = useState('')
+  const [citiesresults, setCitiesresults] = useState()
 
-  useEffect(() => {
-
-/*      const options = [
-      { value: 'Madrid', label: 'Madrid' },
-      { value: 'London', label: 'London' },
-      { value: 'Praga', label: 'Praga' },
-      { value: 'Namibia', label: 'Namibia' },
-      { value: 'Guinea', label: 'Guinea' },
-      { value: 'Vanuatu', label: 'Vanuatu' },
-      { value: 'France', label: 'France' },
-      { value: 'Andorra', label: 'Andorra' },
-      { value: 'Azerbaijan', label: 'Azerbaijan' },
-      { value: 'Denmark', label: 'Denmark' },
-      { value: 'Seattle', label: 'Seattle' },
-    ]  */
-    
-    const url = `https://restcountries.com/v3.1/all`
-    axios.get(url)
-    .then(res => {
-      //console.log(res.data.length);
-      //console.log(res.data);
-
-      let nameCountries = []
-      let countries = res.data
-      let obj = {}
-      for (const x of countries) {
-        //console.log(x.name.common);
-        obj = {
-          value: x.name.common,
-          label: x.name.common,
-        }
-        nameCountries.push(obj)
-      }
-      
-      setCountries(nameCountries)
-      //console.log(nameCountries);
-    })
-    .catch(err => console.log(err))
-
-    //setCountries(options)
-  
-  }, [])
-
+  // 1 Establece la latitud y longitud al inicio 
   useEffect(() => {
 
     const success = pos => {
@@ -78,13 +37,14 @@ function App() {
       //console.log(err);
       setHasError(true)
 
-/*       setTimeout(() => {
+      /*setTimeout(() => {
         setHasError(false)
       }, 5000) */
     }
     navigator.geolocation.getCurrentPosition(success, error);
   }, [])
 
+  // 2 Busca los datos del clima en la latitud y longitud establecida
   useEffect(() => {
     
     if(latlon){
@@ -105,8 +65,8 @@ function App() {
         }
         setTemperature(obj)   
         setWeather(res.data)
-
-        //Oculto el select de los paises:
+        
+        //Oculto el select de los paises:        
         document.getElementById('divLocation').style.display = 'none'
         document.getElementById('currentLocation').style.display = 'inline'
         document.getElementById('searching').style.display = 'none'
@@ -117,46 +77,7 @@ function App() {
 
   }, [latlon])
 
-  const showTime = () => {
-
-    const today = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-    //console.log(Intl.DateTimeFormat().resolvedOptions());
-
-    options.timeZone = timezone//'UTC';//timezone//
-    //options.timeZoneName = 'short';
-    //const now = today.toLocaleString('en-US', options);
-    //const nowH = today.toLocaleTimeString('en-US');
-
-    setNowd(today.toLocaleString('en-US', options))
-
-    var date = new Date();
-    var h = date.getHours(); // 0 - 23
-    var m = date.getMinutes(); // 0 - 59
-    var s = date.getSeconds(); // 0 - 59
-    var session = "AM";
-    
-    if(h == 0){
-        h = 12;
-    }
-    
-    if(h > 12){
-        h = h - 12;
-        session = "PM";
-    }
-    
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
-    
-    var time = h + ":" + m + ":" + s + " " + session;
-    setTimeh(time); 
-  }
-
-  setTimeout(showTime, 1000);
-
+  // 3 Muestra el selector de una nueva Ciudad
   const showSelectLocation = () => {
     
     let element = document.getElementById('divLocation').style.display
@@ -170,31 +91,116 @@ function App() {
 
   }
 
-  const handlerLocation = (e) => {
-    setLocation(e.value)
+  // 4 Recibe el nombre de una ciudad
+  const handleCities = (e) => {
+    setCities(e.target.value)
   }
 
+  // 5 Busca las Ciudades que coincidan con lo escrito por el usuario
   useEffect(() => {
+
+    //console.log(cities);
+    const api = 'AIzaSyBZEPY6mI_gv1vD08Ruzlot4cKnc-c5eis'
+    const url2 = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${cities}&types=geocode&key=${api}`
     
-    if(location){
-      document.getElementById('searching').style.display = 'inline'
-      const apikey = 'e7a1a2cfa98becafeefff6f39e6543e8'
-      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&appid=${apikey}`
+    axios.get(url2)
+    .then(res => {
 
-      axios.get(url)
-      .then(res => {
-        //console.log(res.data[0].lat);
-          const obj = {
-            lat: res.data[0].lat,
-            lon: res.data[0].lon,
-          }
-          setLatlon(obj)
+      setCitiesresults(res.data.predictions)
 
-        })
-      .catch(err => console.log(err))
+    })
+    .catch(err => {
+      console.log(err);
+    }); 
+
+  }, [cities])
+
+  // 5.1 Muestra las Ciudades que coincidan con lo escrito por el usuario
+  const CitiesList = () => (
+    <ul id="citiesList">
+      {citiesresults.map(item => (
+        <li className="optionsList" key={item.place_id} onClick={ e => handlerSelectCity(e,item.place_id)}>
+          <div>{item.description}</div>
+        </li>
+      ))}
+    </ul>
+  );
+
+// 6 Selecciona una Ciudad  
+  const handlerSelectCity = (e,key) => {
+    //console.log(e.target );
+    //console.log(key);
+    setIdciudad(key)
+    showSelectLocation();
+}  
+
+// 6.1 Busca la nueva latitud y longitud del id de la Ciudad y retornamos al paso 2
+useEffect(() => {
+  //console.log(idciudad);
+  const api = 'AIzaSyBZEPY6mI_gv1vD08Ruzlot4cKnc-c5eis'    
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${idciudad}&fields=name%2Crating%2Cgeometry&key=${api}`
+
+  axios.get(url)
+  .then(res => {
+
+    //console.log(res.data.result.geometry.location);
+    const obj = {
+      lat: res.data.result.geometry.location.lat,
+      lon: res.data.result.geometry.location.lng,
     }
 
-  }, [location])
+    document.getElementById('searching').style.display = 'inline'
+    setTimeout(() => {
+      setLatlon(obj)
+    }, 2000);
+    
+  })
+  .catch(err => {
+    console.log(err);
+  }); 
+
+}, [idciudad])
+
+// Muestra la hora y la fecha
+const showTime = () => {
+
+  const today = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  //console.log(Intl.DateTimeFormat().resolvedOptions());
+
+  options.timeZone = timezone//'UTC';//timezone//
+  //options.timeZoneName = 'short';
+  //const now = today.toLocaleString('en-US', options);
+  //const nowH = today.toLocaleTimeString('en-US');
+
+  setNowd(today.toLocaleString('en-US', options))
+
+  var date = new Date();
+  var h = date.getHours(); // 0 - 23
+  var m = date.getMinutes(); // 0 - 59
+  var s = date.getSeconds(); // 0 - 59
+  var session = "AM";
+  
+  if(h == 0){
+      h = 12;
+  }
+  
+  if(h > 12){
+      h = h - 12;
+      session = "PM";
+  }
+  
+  h = (h < 10) ? "0" + h : h;
+  m = (m < 10) ? "0" + m : m;
+  s = (s < 10) ? "0" + s : s;
+  
+  var time = h + ":" + m + ":" + s + " " + session;
+  setTimeh(time); 
+}
+
+setTimeout(showTime, 1000);
 
   return (
     <div>
@@ -223,7 +229,7 @@ function App() {
               
               <div id="searching">
                 <FontAwesomeIcon icon={faCloudArrowDown} beat size='2xl'/>
-                <p>Looking for weather data</p>
+                <p>Looking for new weather data</p>
               </div>
 
               <section className="location">
@@ -235,7 +241,12 @@ function App() {
                 </div>            
 
                 <div id='divLocation' >
-                  <Select onChange={handlerLocation} className="selectLocation" options={countries} />
+                  <div className="locationContent">
+                    <label>
+                      <input className='myInput' name="myInput" defaultValue="" placeholder='Search any city' onChange={handleCities} />
+                    </label>
+                    <CitiesList />                    
+                  </div>               
                 </div>
 
                 <Tooltip label="Change location" placement='top-end'>
