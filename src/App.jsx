@@ -48,8 +48,8 @@ function App() {
   useEffect(() => {
     
     if(latlon){
-
-      const apikey = 'e7a1a2cfa98becafeefff6f39e6543e8'
+      
+      const apikey = import.meta.env.VITE_API_WEATHER;
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latlon.lat}&lon=${latlon.lon}&appid=${apikey}`
 
       axios.get(url)
@@ -100,7 +100,7 @@ function App() {
   useEffect(() => {
 
     //console.log(cities);
-    const api = 'AIzaSyBZEPY6mI_gv1vD08Ruzlot4cKnc-c5eis'
+    const api = import.meta.env.VITE_API_GOOGLE;
     const url2 = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${cities}&types=geocode&key=${api}`
     
     axios.get(url2)
@@ -137,7 +137,7 @@ function App() {
 // 6.1 Busca la nueva latitud y longitud del id de la Ciudad y retornamos al paso 2
 useEffect(() => {
   //console.log(idciudad);
-  const api = 'AIzaSyBZEPY6mI_gv1vD08Ruzlot4cKnc-c5eis'    
+  const api = import.meta.env.VITE_API_GOOGLE;   
   const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${idciudad}&fields=name%2Crating%2Cgeometry&key=${api}`
 
   axios.get(url)
