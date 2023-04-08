@@ -70,7 +70,8 @@ function App() {
         document.getElementById('divLocation').style.display = 'none'
         document.getElementById('currentLocation').style.display = 'inline'
         document.getElementById('searching').style.display = 'none'
-
+        setCitiesresults('')
+        document.getElementById('myInput').value = ''
       })
       .catch(err => console.log(err))
     }
@@ -117,13 +118,21 @@ function App() {
 
   // 5.1 Muestra las Ciudades que coincidan con lo escrito por el usuario
   const CitiesList = () => (
-    <ul id="citiesList">
-      {citiesresults.map(item => (
-        <li className="optionsList" key={item.place_id} onClick={ e => handlerSelectCity(e,item.place_id)}>
-          <div>{item.description}</div>
-        </li>
-      ))}
-    </ul>
+    <>
+      {
+        citiesresults ?
+        <ul id="citiesList">
+          {
+            citiesresults.map(item => (
+              <li className="optionsList" key={item.place_id} onClick={ e => handlerSelectCity(e,item.place_id)}>
+                <div>{item.description}</div>
+              </li>
+            ))
+          }
+        </ul>
+        : ''
+      }
+    </>
   );
 
 // 6 Selecciona una Ciudad  
@@ -243,7 +252,7 @@ setTimeout(showTime, 1000);
                 <div id='divLocation' >
                   <div className="locationContent">
                     <label>
-                      <input className='myInput' name="myInput" defaultValue="" placeholder='Search any city' onChange={handleCities} />
+                      <input className='myInput' id="myInput" name="myInput" defaultValue="" placeholder='Search any city' onChange={handleCities} />
                     </label>
                     <CitiesList />                    
                   </div>               
