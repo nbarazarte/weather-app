@@ -102,7 +102,8 @@ function App() {
 
     //console.log(cities);
     const api = import.meta.env.VITE_API_GOOGLE;
-    const url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${cities}&types=geocode&key=${api}`
+    const urlcors = 'https://cors-anywhere.herokuapp.com/';
+    const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${cities}&types=geocode&key=${api}`
     
     axios.get(url)
     .then(res => {
@@ -146,8 +147,9 @@ function App() {
 // 6.1 Busca la nueva latitud y longitud del id de la Ciudad y retornamos al paso 2
 useEffect(() => {
   //console.log(idciudad);
-  const api = import.meta.env.VITE_API_GOOGLE;   
-  const url = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=${idciudad}&fields=name%2Crating%2Cgeometry&key=${api}`
+  const api = import.meta.env.VITE_API_GOOGLE;
+  const urlcors = 'https://cors-anywhere.herokuapp.com/';
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${idciudad}&fields=name%2Crating%2Cgeometry&key=${api}`
 
   axios.get(url)
   .then(res => {
