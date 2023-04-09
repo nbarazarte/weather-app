@@ -231,6 +231,7 @@ setTimeout(showTime, 1000);
         : 
         weather
         ? <div className="content">
+          
             <div className="weather">
 
               <header className="title">
@@ -271,14 +272,18 @@ setTimeout(showTime, 1000);
               <section className="timeLocation">
                   <h3>{nowd}</h3>
                   <h3 className='time'>{timeh}</h3>
-              </section>           
+              </section>
+
               <WeatherCard weather={weather} temperature={temperature}/>
-                <Tooltip label="Go to my Github" placement='auto-start'>
-                  <a href='https://github.com/nbarazarte/weather-app' target='_blank'>
-                    <i className='bx bxl-github'></i>
-                  </a>
-                </Tooltip>
+
+              <Tooltip label="Go to my Github" placement='auto-start'>
+                <a href='https://github.com/nbarazarte/weather-app' target='_blank'>
+                  <i className='bx bxl-github'></i>
+                </a>
+              </Tooltip>
+
             </div>
+
           </div> 
         : 
         <Loading/>
