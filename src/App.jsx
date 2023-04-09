@@ -232,7 +232,7 @@ setTimeout(showTime, 1000);
         weather
         ? <div className="content">
           
-            <div className="weather">
+            <div className="weather">              
 
               <header className="title">
                 <h1>Weather App</h1>
@@ -243,7 +243,8 @@ setTimeout(showTime, 1000);
                 <FontAwesomeIcon icon={faCloudArrowDown} beat size='2xl'/>
                 <p>Looking for new weather data</p>
               </div>
-
+              
+              
               <section className="location">
 
                 <div id='currentLocation'>
@@ -274,7 +275,9 @@ setTimeout(showTime, 1000);
                   <h3 className='time'>{timeh}</h3>
               </section>
 
+              
               <WeatherCard weather={weather} temperature={temperature}/>
+              
 
               <Tooltip label="Go to my Github" placement='auto-start'>
                 <a href='https://github.com/nbarazarte/weather-app' target='_blank'>

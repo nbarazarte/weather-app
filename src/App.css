@@ -281,57 +281,167 @@ article .bx {
     color: aqua
 }
 
-
   @media (min-width: 700px) {
 
-    .title img {
-        width: 65px;
-    }
+    @media (orientation: landscape) {
 
-    .weather{
-        background-color: black;
-        /* color:white; */
-        opacity: 0.8;
-        border-radius: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem;
-        width: 450px;
-        gap: 1rem;
-    }
+        .title img {
+            width: 65px;
+        }
 
-    .timeLocation {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-    }
+        .weather{
+            background-color: black;
+            /* color:white; */
+            opacity: 0.8;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            width: 750px;
+            gap: 1rem;
+            height: 500px;
+        }
 
-    .info {    
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-    }
+        .weatherCard {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 102%;
+        }
 
-    .icon_temperature{        
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;        
-    }
+        .iconWewather{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
 
-    .iconWewather img {
-        width: 180px;
+        .timeLocation {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info {    
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 0rem;
+           /*  background-color: yellow; */
+            width: 250px;
+        }
+
+        .icon_temperature{        
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            /* background-color: red;  */     
+        }
+
+        .temperature_thermometer{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            /* background-color: green; */
+            width: 140px;             
+        }
+
+        #currentLocation{
+            display: inline;
+            width: 100%;    
+            text-align: center;
+            /* background-color: green; */
+            padding: 0.5rem;
+            width: 325px;
+        }
+
+        .location{
+            display: flex;    
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            /* background-color: red;  */
+            width: 60%;
+        }
+
+        .iconWewather img {
+            width: 100px;
+        }
+
+        .iconWewather h1 {
+            font-size: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .change_temp {
+            width: 120px;
+        }
+
     }
-    
-    .iconWewather h1 {
-        font-size: 50px;
-        color: white;
+      
+    @media (orientation: portrait) {
+
+        .title img {
+            width: 65px;
+        }
+
+        .weather{
+            background-color: red;
+            /* color:white; */
+            opacity: 0.8;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            width: 450px;
+            gap: 1rem;
+        }
+
+        .timeLocation {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info {    
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .icon_temperature{        
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;        
+        }
+
+        .iconWewather img {
+            width: 180px;
+        }
+        
+        .iconWewather h1 {
+            font-size: 50px;
+            color: white;
+        }
+
     }
 
   }

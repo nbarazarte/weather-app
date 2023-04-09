@@ -43,8 +43,10 @@ const WeatherCard = ({weather, temperature}) => {
 
         <section className="iconWewather">
             <div  className="icon_temperature">
+
                 <img className="iconWeather" src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`} />
-                <article>
+                
+                <article className="temperature_thermometer">
                     <h1 className="temperature">
                     <i className='bx bxs-thermometer'></i>                                         
                         {
@@ -52,9 +54,9 @@ const WeatherCard = ({weather, temperature}) => {
                             ? `${temperature?.celsius} °C`
                             : `${temperature?.farenheit} °F`
                         }
-                        
                     </h1>
                 </article>
+
             </div>            
             <h1>
                 {titleweather}
@@ -74,7 +76,7 @@ const WeatherCard = ({weather, temperature}) => {
 
         </section>
 
-        <button onClick={handlerChangeTemperature}>Change to {iscelsius ? '°F' : '°C'}</button>
+        <button className="change_temp" onClick={handlerChangeTemperature}>Change to {iscelsius ? '°F' : '°C'}</button>
     </article>
   )
 }
