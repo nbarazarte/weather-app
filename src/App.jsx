@@ -102,8 +102,8 @@ function App() {
 
     //console.log(cities);
     const api = import.meta.env.VITE_API_GOOGLE;
-    const urlcors = 'https://cors-anywhere.herokuapp.com/';
-    const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${cities}&types=geocode&key=${api}`
+    const urlcors = 'https://cors.eu.org/';
+    const url = `${urlcors}https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${cities}&types=geocode&key=${api}`
     
     axios.get(url)
     .then(res => {
@@ -148,8 +148,8 @@ function App() {
 useEffect(() => {
   //console.log(idciudad);
   const api = import.meta.env.VITE_API_GOOGLE;
-  const urlcors = 'https://cors-anywhere.herokuapp.com/';
-  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${idciudad}&fields=name%2Crating%2Cgeometry&key=${api}`
+  const urlcors = 'https://cors.eu.org/';
+  const url = `${urlcors}https://maps.googleapis.com/maps/api/place/details/json?place_id=${idciudad}&fields=name%2Crating%2Cgeometry&key=${api}`
 
   axios.get(url)
   .then(res => {
