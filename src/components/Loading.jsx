@@ -6,7 +6,7 @@ const Loading = () => {
 
     <div className="loader-circle">            
       <FontAwesomeIcon icon={faCloudArrowDown} beat size='2xl'/>
-      Loadding
+      Loading...
       <div className="loader-line-mask">
         <div className="loader-line"></div>
       </div>
